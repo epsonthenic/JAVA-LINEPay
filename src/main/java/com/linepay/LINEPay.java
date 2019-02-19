@@ -4,18 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+
 
 public class LINEPay {
     public static String transactionId;
     public static String web;
 
-    public static void main(String... args) {
-        LINEPay.request();
-        LINEPay.confirm();
-    }
+//    public static void main(String... args) {
+//        LINEPay.request();
+//        LINEPay.confirm();
+//    }
 
     public static void request() {
         Map<String, String> data = new HashMap<String, String>();
@@ -23,9 +23,9 @@ public class LINEPay {
         data.put("productImageUrl", "http://52.25.22.65:8005/api105/product.png");
         data.put("amount", "1");
         data.put("currency", "THB");
-        data.put("orderId", "123");
-        data.put("confirmUrl", "http://52.25.22.65:8005/api105/page_confirm.php");
-        data.put("cancelUrl", "http://52.25.22.65:8005/api105/page_cancel.php");
+        data.put("orderId", "16"); // เปลี่ยนเลื่อยๆ
+        data.put("confirmUrl", "http://localhost:8080/appUsers/confirm");
+        data.put("cancelUrl", "http://localhost:8080/appUsers/cancel");
         data.put("capture", "true");
         data.put("confirmUrlType", "CLIENT");
 
@@ -63,20 +63,4 @@ public class LINEPay {
         }
     }
 
-    public static void confirm() {
-        String tId = "2015081310395016410";
-
-        Map<String, String> data = new HashMap<String, String>();
-        data.put("amount", "1");
-        data.put("currency", "THB");
-
-        JSONObject jObj = LINEPayAPI.request("https://api-pay.line.me/v2/payments/" + transactionId + "/confirm", data);
-//        JSONObject jObj = LINEPayAPI.request("https://api-pay.line.me/v2/payments/" + tId + "/confirm", data);
-
-        try {
-            System.out.println("returnCode=>" + jObj.getString("returnCode"));
-        } catch (JSONException ex) {
-            Logger.getLogger(LINEPay.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }

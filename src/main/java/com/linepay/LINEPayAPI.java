@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//import com.hmkcode.vo.Content;
 @Component
 public class LINEPayAPI {
 
