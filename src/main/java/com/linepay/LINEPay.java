@@ -23,7 +23,7 @@ public class LINEPay {
         data.put("productImageUrl", "http://52.25.22.65:8005/api105/product.png");
         data.put("amount", "1");
         data.put("currency", "THB");
-        data.put("orderId", "16"); // เปลี่ยนเลื่อยๆ
+        data.put("orderId", "17"); // เปลี่ยนเลื่อยๆ
         data.put("confirmUrl", "http://localhost:8080/appUsers/confirm");
         data.put("cancelUrl", "http://localhost:8080/appUsers/cancel");
         data.put("capture", "true");
